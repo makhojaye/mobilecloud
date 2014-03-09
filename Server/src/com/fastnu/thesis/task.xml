@@ -1,0 +1,13 @@
+<task>
+	<actionClass>
+		<name>com.fastnu.thesis.mapreduce.examples.WordCountMapper</name>
+		<params>
+			<param>compile</param>
+			<param>smartphones</param>
+			<param>derived</param>
+		</params>
+		<description>count the input words</description>
+	</actionClass>
+</task>
+
+

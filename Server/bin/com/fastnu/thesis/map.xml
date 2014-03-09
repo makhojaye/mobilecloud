@@ -1,0 +1,12 @@
+<task>
+	<actionClass>
+		<jobid>1</jobid>
+		<actiontype>MAP</actiontype>
+		<name>com.fastnu.thesis.mapreduce.examples.WordCountMapper</name>
+		<params>
+			<param>atif</param>
+			<param>ali</param>
+		</params>
+		<description>This is class description</description>		
+	</actionClass>
+</task>

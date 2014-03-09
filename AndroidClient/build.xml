@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="AndroidClient" default="dex">
+
+	
+    <!-- Properties -->
+	<property name="sdk-location" value="E:\FAST\RS\MapReduce\Software\Android" />
+    <property name="android-tools" value="${sdk-location}\platform-tools" />
+	 <property name="dx" value="${android-tools}\dx.bat" />
+	
+    <!-- Input directories -->
+    <property name="source-folder" value="src" />
+    <property name="gen-folder" value="gen" />
+    <property name="resource-folder" value="res" />
+    <property name="asset-folder" value="assets" />
+    <property name="source-location" value="${basedir}/${source-folder}" />
+
+    <!-- folder for the 3rd party java libraries -->
+    <property name="external-libs-folder" value="libs" />
+
+    <!-- folder for the native libraries -->
+    <property name="native-libs-folder" value="libs" />
+
+    <!-- Output directories -->
+    <property name="gen-folder" value="gen" />
+    <property name="out-folder" value="bin" />
+    <property name="out-classes" value="${out-folder}/classes" />
+    <property name="out-classes-location" value="${basedir}/${out-classes}"/>
+    <!-- out folders for a parent project if this project is an instrumentation project -->
+    <property name="main-out-folder" value="../${out-folder}" />
+    <property name="main-out-classes" value="${main-out-folder}/classes"/>
+
+    <!-- Intermediate files -->
+    <property name="dex-file" value="classes.dex" />
+    <property name="intermediate-dex" value="${out-folder}/${dex-file}" />
+    <!-- dx does not properly support incorrect / or \ based on the platform
+         and Ant cannot convert them because the parameter is not a valid path.
+         Because of this we have to compute different paths depending on the platform. -->
+    <condition property="intermediate-dex-location"
+            value="${basedir}\${intermediate-dex}"
+            else="${basedir}/${intermediate-dex}" >
+        <os family="windows"/>
+    </condition>
+
+    <!-- Convert this project's .class files into .dex files. -->
+    <target name="dex" >
+        <echo>Converting compiled files and external libraries into ${out-folder}/${dex-file}...</echo>
+        <apply executable="${dx}" failonerror="true" parallel="true">
+            <arg value="--dex" />
+            <arg value="--output=${intermediate-dex-location}" />
+            <arg path="${out-classes-location}" />
+            <fileset dir="${external-libs-folder}" includes="*.jar"/>
+        </apply>
+    </target>
+
+
+</project>

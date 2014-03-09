@@ -1,0 +1,12 @@
+What they do?
+web application
+user can search the videos etc,
+download 
+
+Abstract
+
+developed Hyrax, a platform derived from Hadoop that supports
+cloud computing on Android. Hyrax allows client applications
+to conveniently utilize data and execute computing jobs on networks of smartphones and heterogeneous networks of phones and servers. By scaling with
+the number of devices and tolerating node departure, Hyrax allows applications to use distributed resources abstractly, oblivious to the physical nature
+of the cloud
